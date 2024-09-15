@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.disable-resize.q-textarea .q-field__native {
+  resize: none !important;
+}
+
+.bg {
+  &-grey-standard {
+    background-color: $standardBackground;
+  }
+}
+
+.q-card {
+  border-radius: 0.8rem;
+}
+
+.text {
+  &-xs {
+    font-size: 0.7rem!important;
+  }
+  &-sm {
+    font-size: 0.8rem!important;
+  }
+  &-md {
+    font-size: 1rem!important;
+  }
+  &-lg {
+    font-size: 1.5rem!important;
+  }
+  &-no-transform {
+    text-transform: none!important;
+  }
+  &-bold {
+    font-weight: 800;
+  }
+  &-light-bold {
+    font-weight: 600;
+  }
+  &-disabled {
+    color: #BDBDBD;
+  }
+}
+
+.q-drawer {
+  position: fixed;
+}
+
+.br {
+  &-xs {
+    border-radius: 0.2rem!important;
+  }
+  &-sm {
+    border-radius: 0.5rem!important;
+  }
+  &-md {
+    border-radius: 0.8rem!important;
+  }
+  &-lg {
+    border-radius: 1rem!important;
+  }
+}
+
+.q-btn {
+  border-radius: 0.3rem!important;
+  font-weight: 600!important;
+  font-style: normal!important;
+}
+
+.border {
+  &-none {
+    border: none!important;
+  }
+}
+
+.q-footer {
+  background-color: transparent;
+  height: 4rem;
+}
