@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <slot name="title" />
-    <slot name="filters" />
+  <q-card flat class="table-card">
+    <div class="table-card__head">
+      <slot name="title" />
+      <slot name="filters" />
+    </div>
     <q-table
       class="br-md"
       flat
+      square
       ref="table"
       row-key="_id"
       :columns="columns"
@@ -30,7 +33,7 @@
         </q-tr>
       </template>
     </q-table>
-  </div>
+  </q-card>
 </template>
 <script>
 
@@ -57,3 +60,15 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.table-card {
+  overflow: hidden;
+}
+.table-card__head {
+  padding: 1rem 1rem 0;
+  :deep(.text-h6) {
+    font-weight: 700;
+  }
+}
+</style>

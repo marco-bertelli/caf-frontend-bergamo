@@ -12,7 +12,7 @@
       <template #title>
         <div class="text-h6 row items-center q-pa-xs">
           {{$t('receipts.list')}}
-          <q-btn icon="fas fa-plus" flat round @click="onClickCreate" :loading="loadingCreate"/>
+          <q-btn icon="fas fa-plus" unelevated round color="primary" size="sm" class="q-ml-sm" @click="onClickCreate" :loading="loadingCreate"/>
         </div>
       </template>
       <template #filters>

@@ -1,28 +1,28 @@
 <template>
   <q-layout view="lHh Lpr lff">
     <q-page class="flex flex-center wrapper">
-      <div class="row justify-center">
-        <div class="col-12 col-md-6">
+      <div class="row justify-center full-width q-px-md">
+        <div class="col-12 login-col">
           <div class="row justify-center card-login">
             <div class="col-12 row justify-center">
               <img src="img/logo.png" class="logo" alt="logo"/>
             </div>
-            <div class="col-12 row justify-center">
+            <div class="col-12 row justify-center q-mb-lg">
               <div class="text-h6 text-weight-bold">{{$t('common.login')}}</div>
             </div>
-            <div class="col-12 col-md-8 row q-col-gutter-md">
+            <div class="col-12 row q-col-gutter-md">
               <Input class="col-12" :rules="[notEmpty, testEmail]" ref="email" v-model="user.email" :label="$t('common.email')">
                 <template #append>
                   <q-icon name="fas fa-envelope"/>
                 </template>
               </Input>
-              <Input class="col-12" :rules="[notEmpty]" ref="password" v-model="user.password" :label="$t('common.password')" @keyup.enter="onLogin">
+              <Input class="col-12" :rules="[notEmpty]" ref="password" v-model="user.password" type="password" :label="$t('common.password')" @keyup.enter="onLogin">
                 <template #append>
                   <q-icon name="fas fa-lock"/>
                 </template>
               </Input>
               <div class="col-12 row justify-center">
-                <q-btn class="btn text-weight-bold" color="primary" :label="$t('common.login')" @click="onLogin" :loading="loading"/>
+                <q-btn class="btn text-weight-bold full-width" size="md" unelevated color="primary" :label="$t('common.login')" @click="onLogin" :loading="loading"/>
               </div>
             </div>
           </div>
@@ -76,21 +76,30 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  background-image: url("https://source.unsplash.com/2000x900/?digital");
-  background-color: #ffffff;
-  height: 100vh;
+  background-color: $standardBackground;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba($accent, 0.35) 0, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba($secondary, 0.35) 0, transparent 45%),
+    linear-gradient(135deg, $dark 0%, $primary 100%);
+  min-height: 100vh;
   width: 100vw;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+.login-col {
+  max-width: 420px;
 }
 .card-login {
   background-color: white;
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
 }
 .logo {
-  height: 13rem;
-  width: auto;
+  height: auto;
+  width: 220px;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+.btn {
+  height: 44px;
 }
 </style>

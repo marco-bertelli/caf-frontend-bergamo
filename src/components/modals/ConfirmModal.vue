@@ -1,21 +1,21 @@
 <template>
   <q-dialog ref="dialogRef" @hide="onDialogHide" style="padding: 0">
-    <q-card class="confirm-cart br-md q-pa-md">
+    <q-card class="confirm-modal q-pa-lg">
       <div class="row items-center justify-between full-width q-ma-none q-pa-none">
         <span class="text-bold text-lg">{{title}}</span>
         <q-btn flat round dense icon="close" v-close-popup @click="onDialogHide"/>
       </div>
       <div class="content q-mt-lg">
-        <div class="q-ma-none text-md-lg text-light-bold">
+        <div class="q-ma-none text-md-lg text-grey-8">
           {{ text }}
         </div>
       </div>
       <div class="row justify-between items-center q-mt-md">
         <div>
-          <q-btn :label="$t('common.cancel')" v-close-popup flat color="primary"/>
+          <q-btn :label="$t('common.cancel')" v-close-popup flat color="grey-8"/>
         </div>
         <div>
-          <q-btn :label="$t('common.confirm')" @click="confirm" :loading="loading" flat style="text-decoration: underline"/>
+          <q-btn :label="$t('common.confirm')" @click="confirm" :loading="loading" unelevated color="primary"/>
         </div>
       </div>
     </q-card>
@@ -83,7 +83,8 @@ export default {
 .confirm-modal {
   height: auto;
   width: 30rem;
-  border-radius: 1rem;
+  max-width: 92vw;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

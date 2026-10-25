@@ -10,12 +10,10 @@
     class="left-drawer"
     :breakpoint="500"
   >
-    <q-list dark padding class="menu-wrapper col bg-primary">
-      <q-separator dark/>
+    <q-list dark padding class="menu-wrapper col sidebar-bg">
       <div class="overflow-hidden nav-wrapper">
-        <div class="q-mt-xs sideWith">
-          <div class="flex flex-center q-mx-xs text-white" v-for="link in filteredItems" :key="link.text">
-            <q-separator dark />
+        <div class="sideWith">
+          <div class="flex flex-center q-mx-sm q-mb-xs text-white" v-for="link in filteredItems" :key="link.text">
             <q-item
               dark
               class="full-width borderItems justify-start"
@@ -24,10 +22,10 @@
               clickable
             >
               <q-item-section avatar>
-                <q-icon color="white" size="xs" :name="link.icon"  />
+                <q-icon size="xs" :name="link.icon" class="nav-icon-color" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-white">
+                <q-item-label class="nav-label">
                   {{link.text}}
                 </q-item-label>
               </q-item-section>
@@ -104,7 +102,28 @@ export default {
 
 <style lang="scss" scoped>
 .borderItems {
-  border-radius: 0.2rem;
+  border-radius: 10px;
+  min-height: 44px;
+  color: rgba(255, 255, 255, 0.72);
+  transition: background-color 0.15s, color 0.15s;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.nav-icon-color {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.nav-label {
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sidebar-bg {
+  background: linear-gradient(180deg, $dark 0%, darken($dark, 3%) 100%);
 }
 
 .menu-wrapper {
@@ -142,7 +161,12 @@ export default {
   width: 78%;
 }
 .bg-selected {
-  background-color: #F4F4F480
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+  box-shadow: inset 3px 0 0 lighten($accent, 15%);
+  .nav-icon-color {
+    opacity: 1;
+  }
 }
 .q-drawer--mini {
   .nav-icon {

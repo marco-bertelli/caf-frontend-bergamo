@@ -1,20 +1,20 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen not-found text-white text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
+      <div class="code">
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h5" style="opacity:.7">
+        Pagina non trovata
       </div>
 
       <q-btn
         class="q-mt-xl"
         color="white"
-        text-color="blue"
+        text-color="primary"
         unelevated
-        label="Go Home"
+        label="Torna alla home"
         no-caps
         @click="goHome"
       />
@@ -36,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.not-found {
+  background: linear-gradient(135deg, $dark 0%, $primary 100%);
+}
+.code {
+  font-size: 22vh;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+</style>

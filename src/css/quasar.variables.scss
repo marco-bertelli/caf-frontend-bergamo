@@ -12,15 +12,18 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 //$primary   : #28E7A8;
-$primary   : #78b41c;
-$secondary : #88AB75;
-$accent    : #88AB75;
+// palette presa dal logo ALDEPI
+$primary   : #2B5B84;
+$secondary : #5B7D9A;
+$accent    : #3E7CB1;
 
-$dark      : #1D1D1D;
+$dark      : #18212D;
 
 $positive  : #21BA45;
 $negative  : #F64E60;
 $info      : #31CCEC;
 $warning   : #F2C037;
 
-$standardBackground: rgba(248, 248, 249, 1);
+$standardBackground: #F3F5F8;
+$borderColor: #E3E8EF;
+$textMuted: #6B7685;

@@ -10,7 +10,7 @@
         option-value="_id"
         map-options
         emit-value
-        class="col-4"
+        class="col-12 col-sm-4"
         @update:modelValue="onUpdateValue"
       />
       <Select
@@ -19,7 +19,7 @@
         v-model="filters.year"
         map-options
         emit-value
-        class="col-4"
+        class="col-12 col-sm-4"
         @update:modelValue="onUpdateValue"
       />
       <Select
@@ -28,43 +28,53 @@
         v-model="filters.month"
         map-options
         emit-value
-        class="col-4"
+        class="col-12 col-sm-4"
         @update:modelValue="onUpdateValue"
       />
     </div>
-    <div class="row">
-      <div class="col-12 q-mt-md">
-        <div class="row q-col-gutter-sm">
-          <div class="col-3">
-            <div class="text-bold"> {{$t('common.totalRevenue')}} </div>
-            <div> {{formatCurrency(data.totalRevenue)}}</div>
+    <div class="row q-col-gutter-md q-mt-xs">
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="kpi-card">
+          <div class="kpi-icon"><q-icon name="fas fa-euro-sign"/></div>
+          <div>
+            <div class="kpi-label"> {{$t('common.totalRevenue')}} </div>
+            <div class="kpi-value"> {{formatCurrency(data.totalRevenue)}}</div>
           </div>
-          <div class="col-3">
-            <div class="text-bold"> {{$t('common.totalReceipts')}}</div>
-            <div> {{data.totalReceipts}}</div>
+        </q-card>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="kpi-card">
+          <div class="kpi-icon"><q-icon name="fas fa-file-invoice"/></div>
+          <div>
+            <div class="kpi-label"> {{$t('common.totalReceipts')}}</div>
+            <div class="kpi-value"> {{data.totalReceipts}}</div>
           </div>
-        </div>
+        </q-card>
       </div>
-      <div class="col-12 q-mt-md text-bold">
-        {{$t('common.revenueByDayInMonth')}}
-        <canvas id="revenue-by-days" style="max-height: 35rem"/>
+      <div class="col-12">
+        <q-card flat class="chart-card">
+          <div class="chart-title">{{$t('common.revenueByDayInMonth')}}</div>
+          <canvas id="revenue-by-days" style="max-height: 35rem"/>
+        </q-card>
       </div>
-      <div class="col-12 q-mt-md text-bold">
-        {{$t('common.numberOfReceiptByDayInMonth')}}
-        <canvas id="receipts-by-days" style="max-height: 35rem"/>
+      <div class="col-12">
+        <q-card flat class="chart-card">
+          <div class="chart-title">{{$t('common.numberOfReceiptByDayInMonth')}}</div>
+          <canvas id="receipts-by-days" style="max-height: 35rem"/>
+        </q-card>
       </div>
-      <div class="col-12 q-mt-md text-bold">
-        {{$t('common.revenueByOperatorInMonth')}}
-      </div>
-      <div class="col-12 q-mt-sm text-bold">
-        <div class="row q-col-gutter-sm">
-          <div class="col-6">
-            <canvas id="revenue-by-operator-pie" style="max-height: 25rem"/>
+      <div class="col-12">
+        <q-card flat class="chart-card">
+          <div class="chart-title">{{$t('common.revenueByOperatorInMonth')}}</div>
+          <div class="row q-col-gutter-md">
+            <div class="col-12 col-md-6">
+              <canvas id="revenue-by-operator-pie" style="max-height: 25rem"/>
+            </div>
+            <div class="col-12 col-md-6">
+              <canvas id="revenue-by-operator-bar" style="max-height: 35rem"/>
+            </div>
           </div>
-          <div class="col-6">
-            <canvas id="revenue-by-operator-bar" style="max-height: 35rem"/>
-          </div>
-        </div>
+        </q-card>
       </div>
     </div>
   </q-page>
@@ -77,6 +87,10 @@ import { DateTime } from 'luxon'
 import { cloneDeepWith } from 'lodash'
 import Chart from 'chart.js/auto'
 import { formatCurrency, generateRandomColorFromString, getNameSurname } from 'src/utils'
+
+Chart.defaults.font.family = "'Inter', 'Roboto', sans-serif"
+Chart.defaults.color = '#6B7685'
+const BAR_STYLE = { backgroundColor: '#2B5B84', borderRadius: 6, maxBarThickness: 28 }
 
 export default {
   name: 'Dashboard',
@@ -159,6 +173,7 @@ export default {
             datasets: [
               {
                 label: '€',
+                ...BAR_STYLE,
                 data: [...Array(daysInMonth).keys()].map(i => {
                   const day = date.plus({ days: i }).toISODate()
                   const result = officeResult[0].daysData?.find(r => r._id === day)
@@ -192,6 +207,8 @@ export default {
             datasets: [
               {
                 label: '',
+                ...BAR_STYLE,
+                backgroundColor: '#5B7D9A',
                 data: [...Array(daysInMonth).keys()].map(i => {
                   const day = date.plus({ days: i }).toISODate()
                   const result = officeResult[0].daysData?.find(r => r._id === day)
@@ -225,6 +242,7 @@ export default {
                 return ((operatorResult.find(r => r.operatorId === user._id)?.total || 0) / 100).toFixed(2)
               }),
               maxBarThickness: 30,
+              borderRadius: 6,
               backgroundColor: this.data.operators.map(user => generateRandomColorFromString(user._id))
             }
           ]
@@ -267,5 +285,40 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  height: 100%;
+}
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: $primary;
+  background-color: rgba($primary, 0.1);
+  flex-shrink: 0;
+}
+.kpi-label {
+  font-size: 0.8rem;
+  color: $textMuted;
+  font-weight: 500;
+}
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.chart-card {
+  padding: 1.25rem;
+}
+.chart-title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
 </style>
