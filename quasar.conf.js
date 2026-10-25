@@ -47,11 +47,11 @@ module.exports = configure(function (ctx) {
       config: {
         notify: {
           position: 'top-right',
-          color: 'blue',
+          color: 'primary',
           timeout: 2000
         }
       },
-      lang: 'en-US' // Quasar language pack
+      lang: 'it' // Quasar language pack
     },
     animations: [],
     ssr: {

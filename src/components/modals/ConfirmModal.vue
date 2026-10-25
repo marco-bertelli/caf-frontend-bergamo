@@ -57,9 +57,10 @@ export default {
         this.loading = false
         this.onOKClick()
       } catch (e) {
-        this.onFailed(e)
+        this.loading = false
+        this.onFailed && this.onFailed(e)
         console.debug({ e })
-        this.hide()
+        this.onCancelClick()
       }
     }
   }

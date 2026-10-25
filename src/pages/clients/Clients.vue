@@ -17,12 +17,20 @@
       </template>
       <template #filters>
         <div class="row q-mb-md">
-          <Input class="col-12 col-md-3" v-model="filterValues.q" :label="$t('common.search')" @update:modelValue="() => onChangeFilters(filterValues)"/>
+          <Input class="col-12 col-md-3" v-model="filterValues.q" :label="$t('common.search')" @update:modelValue="() => onChangeFilters(filterValues)" debounce="300">
+            <template #prepend>
+              <q-icon name="fas fa-search" size="xs" color="grey-6"/>
+            </template>
+          </Input>
         </div>
       </template>
       <template #actions="{row}">
-        <q-btn icon="fas fa-trash" color="red" round flat @click="() => onClickDelete(row)" size="sm"/>
-        <q-btn icon="fas fa-pencil" round flat @click="() => goToDetail(row)" size="sm"/>
+        <q-btn icon="fas fa-trash" color="red" round flat @click="() => onClickDelete(row)" size="sm">
+          <q-tooltip>{{ $t('common.delete') }}</q-tooltip>
+        </q-btn>
+        <q-btn icon="fas fa-pencil" round flat @click="() => goToDetail(row)" size="sm">
+          <q-tooltip>{{ $t('common.edit') }}</q-tooltip>
+        </q-btn>
       </template>
     </Table>
   </q-page>

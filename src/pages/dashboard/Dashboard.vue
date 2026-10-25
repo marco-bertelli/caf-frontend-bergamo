@@ -90,6 +90,7 @@ import { formatCurrency, generateRandomColorFromString, getNameSurname } from 's
 
 Chart.defaults.font.family = "'Inter', 'Roboto', sans-serif"
 Chart.defaults.color = '#6B7685'
+Chart.defaults.scales.category.grid = { display: false }
 const BAR_STYLE = { backgroundColor: '#2B5B84', borderRadius: 6, maxBarThickness: 28 }
 
 export default {
@@ -113,10 +114,8 @@ export default {
           { label: 'Novembre', value: 11 },
           { label: 'Dicembre', value: 12 }
         ],
-        years: [
-          { label: '2023', value: 2023 },
-          { label: '2022', value: 2022 }
-        ]
+        // dal 2022 (primo anno di dati) all'anno corrente
+        years: Array.from({ length: DateTime.now().year - 2021 }, (_, i) => DateTime.now().year - i).map(y => ({ label: `${y}`, value: y }))
       },
       filters: {
         officeId: undefined,
@@ -127,7 +126,7 @@ export default {
         operators: [],
         officeResult: [],
         operatorResult: [],
-        totalRevenue: 1200,
+        totalRevenue: 0,
         totalReceipts: 0
       },
       charts: []

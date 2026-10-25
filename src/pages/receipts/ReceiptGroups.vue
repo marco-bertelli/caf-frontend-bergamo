@@ -7,8 +7,12 @@
       </div>
     </template>
     <template #actions="{row}">
-      <q-btn icon="fas fa-trash" color="red" round flat @click="() => onClickDelete(row)" size="sm"/>
-      <q-btn icon="fas fa-arrow-right" round flat @click="() => goToDetail(row)" size="sm"/>
+      <q-btn icon="fas fa-trash" color="red" round flat @click="() => onClickDelete(row)" size="sm">
+        <q-tooltip>{{ $t('common.delete') }}</q-tooltip>
+      </q-btn>
+      <q-btn icon="fas fa-arrow-right" round flat @click="() => goToDetail(row)" size="sm">
+        <q-tooltip>{{ $t('common.open') }}</q-tooltip>
+      </q-btn>
     </template>
   </Table>
 </template>

@@ -65,11 +65,12 @@ export default {
       return this.$refs.inputRef.validate()
     },
     onBlur () {
-      if (!this.model.includes('.')) {
-        this.$emit('update:modelValue', `${this.model}.00`)
-      }
       if (!this.model) {
         this.$emit('update:modelValue', undefined)
+        return
+      }
+      if (!`${this.model}`.includes('.')) {
+        this.$emit('update:modelValue', `${this.model}.00`)
       }
     }
     // onBlur () {

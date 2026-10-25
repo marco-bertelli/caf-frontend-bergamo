@@ -8,6 +8,12 @@ export default {
     logout: 'Esci',
     welcome: 'Benvenuto { name }!',
     search: 'Cerca',
+    menu: 'Menu',
+    edit: 'Modifica',
+    delete: 'Elimina',
+    open: 'Apri',
+    goHome: 'Torna alla home',
+    pageNotFound: 'Pagina non trovata',
     dashboard: 'Dashboard',
     month: 'Mese',
     year: 'Anno',
@@ -40,7 +46,7 @@ export default {
     code: 'Codice',
     nameSurname: 'Nome e cognome',
     streetName: 'Via',
-    personalInfo: 'Informazioni persoanli',
+    personalInfo: 'Informazioni personali',
     zipCode: 'CAP',
     city: 'Città',
     province: 'Provincia',
@@ -58,6 +64,11 @@ export default {
     elementDeletedSuccess: 'Eliminazione avvenuta con successo!',
     sureToDeleteElement: 'Sei sicuro di volere eliminare questo elemento?'
   },
+  notify: {
+    error: 'Si è verificato un errore, riprova'
+  },
+  Unauthorized: 'Sessione scaduta o credenziali non valide',
+  emailInvalid: 'Email non valida',
   roles: {
     user: 'Utente',
     admin: 'Amministratore'
@@ -98,16 +109,16 @@ export default {
     entity: 'Ricevuta',
     entityPlural: 'Ricevute',
     list: 'Lista Ricevute',
-    createdSuccess: 'Ricevuta creato con successo',
-    updatedSuccess: 'Ricevuta modificato con successo'
+    createdSuccess: 'Ricevuta creata con successo',
+    updatedSuccess: 'Ricevuta modificata con successo'
   },
   recepits: {
     title: 'Ricevuta #{code}',
     entity: 'Ricevuta',
     entityPlural: 'Ricevute',
     list: 'Lista Ricevute',
-    createdSuccess: 'Ricevuta creato con successo',
-    updatedSuccess: 'Ricevuta modificato con successo'
+    createdSuccess: 'Ricevuta creata con successo',
+    updatedSuccess: 'Ricevuta modificata con successo'
   },
   recepit_groups: {
     new: 'Nuova posizione',

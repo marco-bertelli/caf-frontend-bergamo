@@ -11,12 +11,12 @@
               <div class="text-h6 text-weight-bold">{{$t('common.login')}}</div>
             </div>
             <div class="col-12 row q-col-gutter-md">
-              <Input class="col-12" :rules="[notEmpty, testEmail]" ref="email" v-model="user.email" :label="$t('common.email')">
+              <Input class="col-12" :rules="[notEmpty, testEmail]" ref="email" v-model="user.email" type="email" autocomplete="username" autofocus :label="$t('common.email')" @keyup.enter="onLogin">
                 <template #append>
                   <q-icon name="fas fa-envelope"/>
                 </template>
               </Input>
-              <Input class="col-12" :rules="[notEmpty]" ref="password" v-model="user.password" type="password" :label="$t('common.password')" @keyup.enter="onLogin">
+              <Input class="col-12" :rules="[notEmpty]" ref="password" v-model="user.password" type="password" autocomplete="current-password" :label="$t('common.password')" @keyup.enter="onLogin">
                 <template #append>
                   <q-icon name="fas fa-lock"/>
                 </template>

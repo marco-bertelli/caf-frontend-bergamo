@@ -92,7 +92,7 @@ export const generateRandomColorFromString = (str) => {
 }
 
 export const notify = {
-  success: (message) => Notify.create({ message }),
+  success: (message) => Notify.create({ message, color: 'positive', icon: 'check_circle' }),
   warning: (message) => Notify.create({ message, color: 'warning' }),
   error: (message) => Notify.create({ message, color: 'negative' })
 }

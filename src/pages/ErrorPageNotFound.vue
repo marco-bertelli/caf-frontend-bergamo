@@ -6,7 +6,7 @@
       </div>
 
       <div class="text-h5" style="opacity:.7">
-        Pagina non trovata
+        {{ $t('common.pageNotFound') }}
       </div>
 
       <q-btn
@@ -14,7 +14,7 @@
         color="white"
         text-color="primary"
         unelevated
-        label="Torna alla home"
+        :label="$t('common.goHome')"
         no-caps
         @click="goHome"
       />
@@ -32,6 +32,8 @@ export default {
   },
   methods: {
     async goHome () {
+      if (!this.isAuthenticated) return this.$router.replace({ name: 'login' })
+      await this.$router.replace({ name: this.currentUserRole === 'admin' ? 'dashboard' : 'receipts' })
     }
   }
 }
