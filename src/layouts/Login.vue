@@ -63,7 +63,7 @@ export default {
         if (!this.isValid()) return
         this.loading = true
         await this.$store.dispatch('login', this.user)
-        await this.$router.replace({ name: 'users' })
+        await this.$router.replace({ name: this.$store.getters.homeRoute })
         this.loading = false
       } catch (e) {
         this.loading = false

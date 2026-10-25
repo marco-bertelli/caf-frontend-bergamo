@@ -34,6 +34,10 @@ const getters = {
   },
   left (state) {
     return state.drawer?.left
+  },
+  // pagina di atterraggio: Utenti è visibile solo agli admin
+  homeRoute (state) {
+    return _.isEqual(_.get(state, 'details.role'), 'admin') ? 'users' : 'receipts'
   }
 }
 

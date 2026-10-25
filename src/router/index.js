@@ -18,7 +18,7 @@ router.beforeEach((to, from, next) => {
 
   if (to.name === 'login') {
     if (isAuthenticated) {
-      next({ name: 'users' })
+      next({ name: store.getters.homeRoute })
       return
     }
   }

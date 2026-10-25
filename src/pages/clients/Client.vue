@@ -73,11 +73,11 @@ export default {
       this.$router.back()
     },
     isValid () {
-      const refs = ['name', 'surname', 'email', 'username']
-      if (this.isAdd) refs.push('password')
+      return ['name', 'surname', 'email'].map(ref => this.$refs[ref].validate()).every(r => r === true)
     },
     async onConfirm () {
       const { id } = this.$route.params
+      if (!this.isValid()) return
       try {
         let message = this.$t('clients.createdSuccess')
         this.loading = true

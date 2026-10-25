@@ -33,7 +33,7 @@ export default {
   methods: {
     async goHome () {
       if (!this.isAuthenticated) return this.$router.replace({ name: 'login' })
-      await this.$router.replace({ name: this.currentUserRole === 'admin' ? 'dashboard' : 'receipts' })
+      await this.$router.replace({ name: this.$store.getters.homeRoute })
     }
   }
 }

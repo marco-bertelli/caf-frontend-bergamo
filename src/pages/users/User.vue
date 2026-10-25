@@ -79,8 +79,9 @@ export default {
       this.$router.back()
     },
     isValid () {
-      const refs = ['name', 'surname', 'email', 'username']
+      const refs = ['name', 'surname', 'email', 'role']
       if (this.isAdd) refs.push('password')
+      return refs.map(ref => this.$refs[ref].validate()).every(r => r === true)
     },
     optionLabel (r) {
       return this.$t(`roles.${r}`)
@@ -104,6 +105,7 @@ export default {
     },
     async onConfirm () {
       const { id } = this.$route.params
+      if (!this.isValid()) return
       try {
         this.loading = true
         let message = this.$t('users.createdSuccess')
